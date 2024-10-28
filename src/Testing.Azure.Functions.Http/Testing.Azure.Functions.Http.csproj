@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Description>This project provides utilities for testing Azure Functions (Isolated). It includes features and tools to facilitate the testing of HttpRequestData and HttpResponseData classes, which are challenging to mock.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
