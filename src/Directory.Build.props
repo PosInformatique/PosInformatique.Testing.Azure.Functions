@@ -1,0 +1,19 @@
+﻿<Project>
+	
+	<!-- Imports the parent Directory.Build.props if exist -->
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+	<PropertyGroup>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+  
+  <!-- Add the InternalsVisibleToAttribute -->
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    
+    <!-- For the unit tests linked to the assembly -->
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+			<_Parameter1>$(AssemblyName).Tests</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+
+</Project>

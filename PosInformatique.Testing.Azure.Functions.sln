@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.Azure.Functions.Http", "src\Testing.Azure.Functions.Http\Testing.Azure.Functions.Http.csproj", "{B3A52FF3-FF5F-4EBF-821A-ADD116EFE383}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2DDEB0B7-EC25-4C84-92B9-601B0B36A979}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		CodeCoverage.runsettings = CodeCoverage.runsettings
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		LICENSE = LICENSE
+		README.md = README.md
+		stylecop.json = stylecop.json
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.Azure.Functions.Http.Tests", "tests\Testing.Azure.Functions.Http.Tests\Testing.Azure.Functions.Http.Tests.csproj", "{D453375B-ECFE-4FC2-86D4-EBCA3DFC2894}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.Azure.Functions.Samples", "samples\Testing.Azure.Functions.Samples\Testing.Azure.Functions.Samples.csproj", "{1E516752-4FDE-4BDB-8585-1488B1AC85ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.Azure.Functions.Samples.Tests", "samples\Testing.Azure.Functions.Samples.Tests\Testing.Azure.Functions.Samples.Tests.csproj", "{B0DC2333-383D-4D0A-8852-EFB9D6AFF06E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D2A59021-CB4D-4EDC-A523-D4FAC808F041}"
+	ProjectSection(SolutionItems) = preProject
+		tests\.editorconfig = tests\.editorconfig
+		tests\Directory.Build.props = tests\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6E24C08F-45FD-4E8A-B7A0-CE65B03CF94B}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{AC1D6A73-AA4C-41CE-BE1B-05E4960F1B26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{D75A89C6-90BD-4800-A325-DFFFF166D406}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\github-actions-ci.yaml = .github\workflows\github-actions-ci.yaml
+		.github\workflows\github-actions-release.yml = .github\workflows\github-actions-release.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3A52FF3-FF5F-4EBF-821A-ADD116EFE383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A52FF3-FF5F-4EBF-821A-ADD116EFE383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A52FF3-FF5F-4EBF-821A-ADD116EFE383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A52FF3-FF5F-4EBF-821A-ADD116EFE383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D453375B-ECFE-4FC2-86D4-EBCA3DFC2894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D453375B-ECFE-4FC2-86D4-EBCA3DFC2894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D453375B-ECFE-4FC2-86D4-EBCA3DFC2894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D453375B-ECFE-4FC2-86D4-EBCA3DFC2894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E516752-4FDE-4BDB-8585-1488B1AC85ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E516752-4FDE-4BDB-8585-1488B1AC85ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E516752-4FDE-4BDB-8585-1488B1AC85ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E516752-4FDE-4BDB-8585-1488B1AC85ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0DC2333-383D-4D0A-8852-EFB9D6AFF06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0DC2333-383D-4D0A-8852-EFB9D6AFF06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0DC2333-383D-4D0A-8852-EFB9D6AFF06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0DC2333-383D-4D0A-8852-EFB9D6AFF06E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D2A59021-CB4D-4EDC-A523-D4FAC808F041} = {2DDEB0B7-EC25-4C84-92B9-601B0B36A979}
+		{6E24C08F-45FD-4E8A-B7A0-CE65B03CF94B} = {2DDEB0B7-EC25-4C84-92B9-601B0B36A979}
+		{AC1D6A73-AA4C-41CE-BE1B-05E4960F1B26} = {2DDEB0B7-EC25-4C84-92B9-601B0B36A979}
+		{D75A89C6-90BD-4800-A325-DFFFF166D406} = {AC1D6A73-AA4C-41CE-BE1B-05E4960F1B26}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A7A80B4-1F82-45DA-B259-7537FEDAAC49}
+	EndGlobalSection
+EndGlobal
