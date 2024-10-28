@@ -35,11 +35,9 @@ namespace PosInformatique.Testing.Azure.Functions.Samples
         {
             var response = request.CreateResponse();
 
-            response.Body = new MemoryStream([3, 4]);
-
             await response.WriteBytesAsync([1, 2]);
 
-            response.StatusCode = HttpStatusCode.OK;
+            response.StatusCode = HttpStatusCode.NotFound;
 
             return response;
         }
