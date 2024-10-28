@@ -44,7 +44,7 @@ namespace PosInformatique.Testing.Azure.Functions.Http
         /// </summary>
         /// <param name="json">Object to serialize into JSON.</param>
         /// <param name="options">Options of the serialization.</param>
-        public void SetJson(object json, JsonSerializerOptions? options = null)
+        public void SetJson(object? json, JsonSerializerOptions? options = null)
         {
             this.Stream = new MemoryStream();
 

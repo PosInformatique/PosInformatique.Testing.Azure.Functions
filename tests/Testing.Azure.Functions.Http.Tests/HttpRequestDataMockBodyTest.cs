@@ -49,5 +49,19 @@ namespace PosInformatique.Testing.Azure.Functions.Http.Tests
 
             jsonString.Should().Be("""{"Name":"The name"}""");
         }
+
+        [Fact]
+        public void Set_WithJson_Null()
+        {
+            var body = new HttpRequestDataMockBody();
+
+            body.SetJson(null);
+
+            body.Stream.Position.Should().Be(0);
+
+            var jsonString = Encoding.UTF8.GetString(body.Stream.As<MemoryStream>().ToArray());
+
+            jsonString.Should().Be("""null""");
+        }
     }
 }
