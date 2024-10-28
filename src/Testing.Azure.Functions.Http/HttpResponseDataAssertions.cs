@@ -6,6 +6,7 @@
 
 namespace PosInformatique.Testing.Azure.Functions.Http
 {
+    using System.Text;
     using System.Text.Json;
     using global::FluentAssertions;
     using global::FluentAssertions.Common;
@@ -74,6 +75,33 @@ namespace PosInformatique.Testing.Azure.Functions.Http
             var bodyStream = this.response.GetBodyStream();
 
             bodyStream.Should().BeJsonDeserializableInto(expectedJsonObject, options);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Assert the content of the <see cref="HttpResponseData.Body"/> to check if it is
+        /// string encoded with the specified <paramref name="encoding"/>.
+        /// </summary>
+        /// <param name="expectedString">Expected string encoded.</param>
+        /// <param name="encoding">Encoding of the string to check. If <see langword="null"/>, the UTF-8 encoding is used.</param>
+        /// <returns>The current instance of the <see cref="HttpResponseDataAssertions"/> to continue the assertions.</returns>
+        public HttpResponseDataAssertions WithStringBody(string expectedString, Encoding? encoding = null)
+        {
+            if (encoding is null)
+            {
+                encoding = Encoding.UTF8;
+            }
+
+            var bodyStream = this.response.GetBodyStream();
+
+            using var memoryStream = new MemoryStream();
+
+            bodyStream.CopyTo(memoryStream);
+
+            var actualString = encoding.GetString(memoryStream.ToArray());
+
+            actualString.Should().Be(expectedString);
 
             return this;
         }

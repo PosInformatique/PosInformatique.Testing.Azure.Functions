@@ -6,6 +6,7 @@
 
 namespace PosInformatique.Testing.Azure.Functions.Http.Tests
 {
+    using System.Text;
     using System.Text.Json;
     using Xunit.Sdk;
 
@@ -138,6 +139,80 @@ namespace PosInformatique.Testing.Azure.Functions.Http.Tests
 
             act.Should().ThrowExactly<XunitException>()
                 .WithMessage("The body of the response is not empty.");
+
+            response.Body.Position.Should().Be(position);
+        }
+
+        [Fact]
+        public void WithStringBody()
+        {
+            var response = new HttpResponseDataImplementation(new FunctionContextImplementation(new HttpRequestDataMock()));
+            response.Body.Write(Encoding.Unicode.GetBytes("The string"));
+
+            var assertions = new HttpResponseDataAssertions(response);
+
+            var position = response.Body.Position;
+
+            assertions.WithStringBody("The string", Encoding.Unicode)
+                .Should().BeSameAs(assertions);
+
+            response.Body.Position.Should().Be(position);
+        }
+
+        [Fact]
+        public void WithStringBody_DefaultEncoding()
+        {
+            var response = new HttpResponseDataImplementation(new FunctionContextImplementation(new HttpRequestDataMock()));
+            response.Body.Write(Encoding.UTF8.GetBytes("The string"));
+
+            var assertions = new HttpResponseDataAssertions(response);
+
+            var position = response.Body.Position;
+
+            assertions.WithStringBody("The string")
+                .Should().BeSameAs(assertions);
+
+            response.Body.Position.Should().Be(position);
+        }
+
+        [Fact]
+        public void WithStringBody_DifferentValue_Failed()
+        {
+            var response = new HttpResponseDataImplementation(new FunctionContextImplementation(new HttpRequestDataMock()));
+            response.Body.Write(Encoding.Unicode.GetBytes("The other string"));
+
+            var assertions = new HttpResponseDataAssertions(response);
+
+            var position = response.Body.Position;
+
+            var act = () =>
+            {
+                assertions.WithStringBody("The string", Encoding.Unicode);
+            };
+
+            act.Should().ThrowExactly<XunitException>()
+                .WithMessage("Expected actualString to be \"The string\" with a length of 10, but \"The other string\" has a length of 16, differs near \"oth\" (index 4).");
+
+            response.Body.Position.Should().Be(position);
+        }
+
+        [Fact]
+        public void WithStringBody_DifferentEncoding_Failed()
+        {
+            var response = new HttpResponseDataImplementation(new FunctionContextImplementation(new HttpRequestDataMock()));
+            response.Body.Write(Encoding.UTF8.GetBytes("The other string"));
+
+            var assertions = new HttpResponseDataAssertions(response);
+
+            var position = response.Body.Position;
+
+            var act = () =>
+            {
+                assertions.WithStringBody("The string", Encoding.Unicode);
+            };
+
+            act.Should().ThrowExactly<XunitException>()
+                .WithMessage("Expected actualString to be \"The string\" with a length of 10, but \"桔\u2065瑯敨\u2072瑳楲杮\" has a length of 8, differs near \"桔\u2065瑯\" (index 0).");
 
             response.Body.Position.Should().Be(position);
         }
