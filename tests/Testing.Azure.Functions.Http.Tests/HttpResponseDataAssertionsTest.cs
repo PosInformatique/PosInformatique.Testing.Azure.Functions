@@ -191,7 +191,7 @@ namespace PosInformatique.Testing.Azure.Functions.Http.Tests
             };
 
             act.Should().ThrowExactly<XunitException>()
-                .WithMessage("Expected actualString to be \"The string\" with a length of 10, but \"The other string\" has a length of 16, differs near \"oth\" (index 4).");
+                .WithMessage("Expected actualString to be the same string, but they differ at index 4:\r\n       ↓ (actual)\r\n  \"The other string\"\r\n  \"The string\"\r\n       ↑ (expected).");
 
             response.Body.Position.Should().Be(position);
         }
@@ -212,7 +212,7 @@ namespace PosInformatique.Testing.Azure.Functions.Http.Tests
             };
 
             act.Should().ThrowExactly<XunitException>()
-                .WithMessage("Expected actualString to be \"The string\" with a length of 10, but \"桔\u2065瑯敨\u2072瑳楲杮\" has a length of 8, differs near \"桔\u2065瑯\" (index 0).");
+                .WithMessage("Expected actualString to be the same string, but they differ at index 0:\r\n   ↓ (actual)\r\n  \"桔\u2065瑯敨\u2072瑳楲杮\"\r\n  \"The string\"\r\n   ↑ (expected).");
 
             response.Body.Position.Should().Be(position);
         }

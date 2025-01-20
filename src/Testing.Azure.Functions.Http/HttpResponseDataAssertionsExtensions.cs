@@ -6,7 +6,7 @@
 
 namespace PosInformatique.Testing.Azure.Functions.Http
 {
-    using global::FluentAssertions.Common;
+    using global::FluentAssertions;
     using Microsoft.Azure.Functions.Worker.Http;
 
     /// <summary>
@@ -24,13 +24,13 @@ namespace PosInformatique.Testing.Azure.Functions.Http
         {
             if (response is not HttpResponseDataImplementation responseMock)
             {
-                Services.ThrowException("The response does not originate from a HttpRequestDataMock object.");
+                AssertionEngine.TestFramework.Throw("The response does not originate from a HttpRequestDataMock object.");
                 return default!;
             }
 
             if (!request.Mock.Responses.Contains(responseMock))
             {
-                Services.ThrowException("The response does not originate from the request instance.");
+                AssertionEngine.TestFramework.Throw("The response does not originate from the request instance.");
             }
 
             return new HttpResponseDataAssertions(responseMock);
