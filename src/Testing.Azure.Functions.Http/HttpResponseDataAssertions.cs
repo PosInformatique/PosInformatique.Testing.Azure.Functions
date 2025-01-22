@@ -56,7 +56,7 @@ namespace PosInformatique.Testing.Azure.Functions.Http
 
             if (byteRead != -1)
             {
-                Services.ThrowException("The body of the response is not empty.");
+                throw new AzureFunctionsAssertionFailedException("The body of the response is not empty.");
             }
 
             return this;

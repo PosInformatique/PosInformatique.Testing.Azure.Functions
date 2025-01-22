@@ -137,7 +137,7 @@ namespace PosInformatique.Testing.Azure.Functions.Http.Tests
                 assertions.WithEmptyBody();
             };
 
-            act.Should().ThrowExactly<XunitException>()
+            act.Should().ThrowExactly<AzureFunctionsAssertionFailedException>()
                 .WithMessage("The body of the response is not empty.");
 
             response.Body.Position.Should().Be(position);

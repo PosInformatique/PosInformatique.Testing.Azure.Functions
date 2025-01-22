@@ -24,13 +24,12 @@ namespace PosInformatique.Testing.Azure.Functions.Http
         {
             if (response is not HttpResponseDataImplementation responseMock)
             {
-                Services.ThrowException("The response does not originate from a HttpRequestDataMock object.");
-                return default!;
+                throw new AzureFunctionsAssertionFailedException("The response does not originate from a HttpRequestDataMock object.");
             }
 
             if (!request.Mock.Responses.Contains(responseMock))
             {
-                Services.ThrowException("The response does not originate from the request instance.");
+                throw new AzureFunctionsAssertionFailedException("The response does not originate from the request instance.");
             }
 
             return new HttpResponseDataAssertions(responseMock);

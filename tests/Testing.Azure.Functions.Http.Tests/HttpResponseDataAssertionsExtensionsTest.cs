@@ -33,7 +33,7 @@ namespace PosInformatique.Testing.Azure.Functions.Http.Tests
             var response = request.Object.CreateResponse();
 
             response.Invoking(r => r.ShouldMatchRequest(otherRequest))
-                .Should().ThrowExactly<XunitException>()
+                .Should().ThrowExactly<AzureFunctionsAssertionFailedException>()
                 .WithMessage("The response does not originate from the request instance.");
         }
 
@@ -45,7 +45,7 @@ namespace PosInformatique.Testing.Azure.Functions.Http.Tests
             var response = new Mock<HttpResponseData>(MockBehavior.Strict, Mock.Of<FunctionContext>(MockBehavior.Strict));
 
             response.Object.Invoking(r => r.ShouldMatchRequest(request))
-                .Should().ThrowExactly<XunitException>()
+                .Should().ThrowExactly<AzureFunctionsAssertionFailedException>()
                 .WithMessage("The response does not originate from a HttpRequestDataMock object.");
 
             response.VerifyAll();
