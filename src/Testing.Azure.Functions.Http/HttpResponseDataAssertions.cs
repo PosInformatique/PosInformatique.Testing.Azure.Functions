@@ -9,6 +9,7 @@ namespace PosInformatique.Testing.Azure.Functions.Http
     using System.Text;
     using System.Text.Json;
     using global::FluentAssertions;
+    using global::FluentAssertions.Common;
     using Microsoft.Azure.Functions.Worker.Http;
 
     /// <summary>
@@ -55,7 +56,7 @@ namespace PosInformatique.Testing.Azure.Functions.Http
 
             if (byteRead != -1)
             {
-                AssertionEngine.TestFramework.Throw("The body of the response is not empty.");
+                Services.ThrowException("The body of the response is not empty.");
             }
 
             return this;
